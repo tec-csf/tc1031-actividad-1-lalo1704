@@ -13,7 +13,7 @@ using namespace std;
 
 int genera_int()
 {
-    return rand() %10000;
+    return rand() %100;
 }
 
 template <typename T>
@@ -50,25 +50,29 @@ for (int i=0;i<repetir;i++)
 
     int result= busqueda(elementos, num_buscado);
 
-    auto end = chrono::steady_clock::now();
-    cout << "Tiempo de ejecución : "
-        << chrono::duration_cast<chrono::microseconds>(end - start).count()
-        << " microsegundos" << endl; 
+    
 
     if (result==-1)
     {
         cout<<"El valor no se encontró"<<endl;
-        cout<<"-------------------------------------------------"<<endl;  
+          
     }
     else
     {
         cout<<"El valor se encuentra en la posición: "<< result+1<<endl;
-        cout<<"-------------------------------------------------"<<endl; 
+        
     } 
     
 
+    
+    auto end = chrono::steady_clock::now();
+    cout << "Tiempo de ejecución : "
+        << chrono::duration_cast<chrono::microseconds>(end - start).count()
+        << " microsegundos" << endl; 
     cout<<"-----------------------------------------------------------"<<endl;
     }
+    
+    
 }
 template <typename T>
 void busqueda_secuencialMovFrente(vector <T> elementos, T num_buscado, T repetir)
@@ -80,20 +84,15 @@ for (int i=0;i<repetir;i++)
     cout<<"Número buscado: "<<num_buscado<<endl;
     int result= busqueda(elementos, num_buscado);
 
-    auto end = chrono::steady_clock::now();
-    cout << "Tiempo de ejecución : "
-        << chrono::duration_cast<chrono::microseconds>(end - start).count()
-        << " microsegundos" << endl; 
-
     if (result==-1)
     {
         cout<<"El número no está en el vector"<<endl;
-        cout<<"-------------------------------------------------"<<endl;
+        
     }
     else
     {    
         cout<<"El número se encontraba en en la posición: "<< result+1 << ", ahora está en primero"<<endl;
-        cout<<"-------------------------------------------------"<<endl;
+        
         
         int primero = elementos.at(result);
         for (int i=result; i>=1; --i)
@@ -103,6 +102,12 @@ for (int i=0;i<repetir;i++)
         elementos.at(0)=primero;
         cout<<endl; 
     }
+    auto end = chrono::steady_clock::now();
+    cout << "Tiempo de ejecución : "
+        << chrono::duration_cast<chrono::microseconds>(end - start).count()
+        << " microsegundos" << endl;
+    cout<<"-------------------------------------------------"<<endl; 
+
     
 }
 }
@@ -112,25 +117,23 @@ void busqueda_secuencialTransposicion(vector <T> elementos, T num_buscado, T rep
 {
     for (int i=0;i<repetir;i++)
     {
-    cout<<"Número buscado: "<<num_buscado<<endl;
     auto start = chrono::steady_clock::now();
+    cout<<"Número buscado: "<<num_buscado<<endl;
+    
     int result= busqueda(elementos, num_buscado);
 
-    auto end = chrono::steady_clock::now();
-    cout << "Tiempo de ejecución : "
-        << chrono::duration_cast<chrono::microseconds>(end - start).count()
-        << " microsegundos" << endl; 
+     
 
     if (result==-1)
     {
         cout<<"El número no está en el vector"<<endl;
-        cout<<"-------------------------------------------------"<<endl;
+       
 
     }
     else
     {     
         cout<<"El número se encontraba en en la posición: "<< result+1 << " y se intercambió con el de la primera"<<endl;
-        cout<<"-------------------------------------------------"<<endl;
+        
 
         int primero = elementos.at(1);
         int num = elementos.at(result);
@@ -139,7 +142,12 @@ void busqueda_secuencialTransposicion(vector <T> elementos, T num_buscado, T rep
         elementos.at(result)=primero;
 
         cout<<endl;
-    }     
+    } 
+    auto end = chrono::steady_clock::now();
+    cout << "Tiempo de ejecución : "
+        << chrono::duration_cast<chrono::microseconds>(end - start).count()
+        << " microsegundos" << endl;
+     cout<<"-------------------------------------------------"<<endl;
 }
 }
 template <typename T>
@@ -147,17 +155,21 @@ void busqueda_secuencialOrdenamiento(vector <T> elementos, T num_buscado, T repe
 {
 for (int i=0;i<repetir;i++)
     {
+    
+    
     int encontrado=-1;
 
     cout<<"Número buscado: "<<num_buscado<<endl;
 
     sort(elementos.begin(),elementos.end());
+    
+    auto start = chrono::steady_clock::now();
 
     long int size = elementos.size();
 
     int a=0;
 
-    auto start = chrono::steady_clock::now();
+    
 
     while (encontrado==-1 && a < size)
     {
@@ -171,24 +183,26 @@ for (int i=0;i<repetir;i++)
     } 
     cout<<endl;
     
-    auto end = chrono::steady_clock::now();
-    cout << "Tiempo de ejecución : "
-        << chrono::duration_cast<chrono::microseconds>(end - start).count()
-        << " microsegundos" << endl; 
+    
    
     
     if (encontrado==-1)
     {
         cout<<"El valor no se encontró"<<endl;
-        cout<<"-------------------------------------------------"<<endl; 
+        
         
         
     }
     else
     {
         cout<<"El valor se encuentra en la posición: "<< encontrado+1<<endl;
-        cout<<"-------------------------------------------------"<<endl; 
-    }  
+        
+    } 
+    auto end = chrono::steady_clock::now();
+    cout << "Tiempo de ejecución : "
+        << chrono::duration_cast<chrono::microseconds>(end - start).count()
+        << " microsegundos" << endl;
+     cout<<"-------------------------------------------------"<<endl;
     }
 }
 
@@ -198,8 +212,12 @@ void busqueda_binaria(vector <T> elementos, T num_buscado, T repetir)
 {
     for (int i=0;i<repetir;i++)
     {
-        num
+        
+    
+    
     sort(elementos.begin(),elementos.end());
+    
+    
 
     /*
     cout<<"Vector ordenado: "<<endl;
@@ -209,9 +227,6 @@ void busqueda_binaria(vector <T> elementos, T num_buscado, T repetir)
     }
     */
     
-    
-    cout << endl;
-    cout<<endl;
 
     int inferior= 0;
     int superior= elementos.size();
@@ -240,12 +255,11 @@ void busqueda_binaria(vector <T> elementos, T num_buscado, T repetir)
             medio=(inferior+superior)/2;
         }
     }
-
     auto end = chrono::steady_clock::now();
     cout << "Tiempo de ejecución : "
         << chrono::duration_cast<chrono::microseconds>(end - start).count()
         << " microsegundos" << endl;
-   
+
     if (inferior>superior)
     {
         cout<<"El número no se encontró"<<endl;
@@ -258,6 +272,11 @@ void busqueda_binaria(vector <T> elementos, T num_buscado, T repetir)
     {
         cout<<"El número no se encontró"<<endl;
     }
+    
+    
+     cout<<"-------------------------------------------------"<<endl;
+   
+    
     }
     
 
@@ -289,8 +308,6 @@ int main()
     }  
     //cout<<endl;
     cout<<"-----------------------------------Busq Secuencial----------------------------------------"<<endl;
-
-    auto start = chrono::steady_clock::now();
     
     busqueda_secuencial<int>(elementos, valor_buscado, repetir);
 
@@ -310,5 +327,6 @@ int main()
     cout<<"-----------------------------------Busq Binaria------------------------------------------"<<endl;
 
     busqueda_binaria<int>(elementos, valor_buscado, repetir);
+    
 
 }
