@@ -13,7 +13,7 @@ using namespace std;
 
 int genera_int()
 {
-    return rand() %100;
+    return rand();
 }
 
 template <typename T>
@@ -169,8 +169,6 @@ for (int i=0;i<repetir;i++)
 
     int a=0;
 
-    
-
     while (encontrado==-1 && a < size)
     {
         //cout<<elementos[a]<<", ";
@@ -178,7 +176,11 @@ for (int i=0;i<repetir;i++)
         {
             encontrado = a;
             break;
-        } 
+        }
+        else if (elementos[a]>num_buscado)
+        {
+            break;
+        }
         ++a;   
     } 
     cout<<endl;
